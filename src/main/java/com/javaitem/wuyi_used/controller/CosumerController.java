@@ -22,7 +22,7 @@ public class CosumerController {
     /**
      * 判断是否登录成功
      */
-    @CrossOrigin(origins = "*",maxAge = 3600)
+//    @CrossOrigin(origins = "*",maxAge = 3600)
     @RequestMapping(value = "/cosumer/login/status",method = RequestMethod.POST)
     public Object loginStatus(HttpServletRequest request, HttpSession session){
         JSONObject jsonObject = new JSONObject();
