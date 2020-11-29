@@ -6,9 +6,12 @@ package com.javaitem.wuyi_used.service;
 public interface CosumerService {
     /**
      * 用户名和密码验证
-     * @param username
-     * @param password
-     * @return
      */
     public boolean verifyPassword(String username,String password);
+    public boolean updateLoginTime(String username,String loginTime);
+    /**
+     * 注册用户
+     */
+    public boolean verifyRegister(String username,String password);
+    public boolean register(String username,String password,String registerTime);
 }

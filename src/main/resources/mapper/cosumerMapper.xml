@@ -9,6 +9,15 @@
         <result column="password" jdbcType="VARCHAR" property="password"/>
     </resultMap>
     <select id="verifyPassword" resultType="java.lang.Integer">
-        select count(*) from cosumer where username=#{username} and password=#{password}
+        select count(*) from cosumer where userName=#{username} and userPwd=#{password}
     </select>
+    <select id="verifyRegister" resultType="java.lang.Integer">
+        select count(*) from cosumer where userName=#{username}
+    </select>
+    <insert id="register" >
+        insert into cosumer(userName,userPwd,registTime) values (#{username},#{password},#{registerTime})
+    </insert>
+    <update id="updateLoginTime" >
+        update cosumer set loginTime = #{loginTime} where userName = #{username}
+    </update>
 </mapper>
