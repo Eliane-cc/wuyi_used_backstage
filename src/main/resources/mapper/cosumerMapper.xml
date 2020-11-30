@@ -5,8 +5,11 @@
 <mapper namespace="com.javaitem.wuyi_used.dao.cosumerMapper">
     <resultMap id="BaseResultMap" type="com.javaitem.wuyi_used.domain.cosumer" >
         <id column="userId" jdbcType="INTEGER" property="userId"/>
-        <result column="username" jdbcType="VARCHAR" property="username"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="userName" jdbcType="VARCHAR" property="username"/>
+        <result column="userPwd" jdbcType="VARCHAR" property="password"/>
+        <result column="loginTime" jdbcType="TIMESTAMP" property="loginTime"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="registTime" jdbcType="TIMESTAMP" property="registTime"/>
     </resultMap>
     <select id="verifyPassword" resultType="java.lang.Integer">
         select count(*) from cosumer where userName=#{username} and userPwd=#{password}

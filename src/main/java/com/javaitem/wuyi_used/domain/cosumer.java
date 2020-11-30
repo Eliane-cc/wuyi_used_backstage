@@ -9,13 +9,11 @@ public class cosumer implements Serializable {
     /*主键*/
     private Integer userId;
     /*用户名*/
-    private String username;
+    private String userName;
     /*密码*/
-    private String password;
+    private String userPwd;
     /*用户头像链接*/
     private String avatar;
-    /*用户最新登录时间*/
-    private String loginTime;
 
     public Integer getUserId() {
         return userId;
@@ -25,20 +23,20 @@ public class cosumer implements Serializable {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPwd() {
+        return userPwd;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd;
     }
 
     public String getAvatar() {
@@ -56,4 +54,19 @@ public class cosumer implements Serializable {
     public void setLoginTime(String loginTime) {
         this.loginTime = loginTime;
     }
+
+    public String getRegistTime() {
+        return registTime;
+    }
+
+    public void setRegistTime(String registTime) {
+        this.registTime = registTime;
+    }
+
+    /*用户最新登录时间*/
+    private String loginTime;
+    /*用户最新登录时间*/
+    private String registTime;
+
+
 }

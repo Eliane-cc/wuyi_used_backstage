@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaitem.wuyi_used.dao.commodityListMapper">
+    <resultMap id="BaseResultMap" type="com.javaitem.wuyi_used.domain.commodityList" >
+        <id column="commodityId" jdbcType="INTEGER" property="commodityId"/>
+        <result column="userId" jdbcType="INTEGER" property="userId"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="extent" jdbcType="INTEGER" property="extent"/>
+        <result column="releaseTime" jdbcType="TIMESTAMP" property="releaseTime"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="buyTime" jdbcType="TIMESTAMP" property="buyTime"/>
+        <result column="imgUrl" jdbcType="VARCHAR" property="imgUrl"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="isSold" jdbcType="INTEGER" property="isSold"/>
+    </resultMap>
+    <select id="Base_Column_List">
+        commodityId,userId,title,extent,releaseTime,price,buyTime,imgUrl,sort,isSold
+    </select>
+
+    <insert id="insert" parameterType="com.javaitem.wuyi_used.domain.commodityList">
+        insert into commodity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commodityId != null">
+                commodityId,
+            </if>
+            <if test="userId != null">
+                userId,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="extent != null">
+                extent,
+            </if>
+            <if test="releaseTime != null">
+                releaseTime,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="buyTime != null">
+                buyTime,
+            </if>
+            <if test="imgUrl != null">
+                imgUrl,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="isSold != null">
+                isSold,
+            </if>
+        </trim>
+        <trim prefix=" values (" suffix=")" suffixOverrides=",">
+            <if test="commodityId != null">
+                #{commodityId},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="extent != null">
+                #{extent},
+            </if>
+            <if test="releaseTime != null">
+                #{releaseTime},
+            </if>
+            <if test="price != null">
+                #{price},
+            </if>
+            <if test="buyTime != null">
+                #{buyTime},
+            </if>
+            <if test="imgUrl != null">
+                #{imgUrl},
+            </if>
+            <if test="sort != null">
+                #{sort},
+            </if>
+            <if test="isSold != null">
+                #{isSold},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.javaitem.wuyi_used.domain.commodityList">
+        update commodity
+        <set>
+            <if test="commodityId != null">
+                commodityId = #{commodityId},
+            </if>
+            <if test="userId != null">
+                userId = #{userId},
+            </if>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="extent != null">
+                extent = #{extent},
+            </if>
+            <if test="releaseTime != null">
+                releaseTime = #{releaseTime},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="buyTime != null">
+                buyTime = #{buyTime},
+            </if>
+            <if test="imgUrl != null">
+                imgUrl = #{imgUrl},
+            </if>
+            <if test="sort != null">
+                sort = #{sort},
+            </if>
+            <if test="isSold != null">
+                isSold = #{isSold},
+            </if>
+        </set>
+        where commodityId = #{commodityId}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from commodity
+        where commodityId = #{commodityId}
+    </delete>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from commodity
+        where commodityId = #{commodityId}
+    </select>
+
+    <select id="commodityListOfName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from commodity,cosumer
+        where cosumer.userName like #{userName} and cosumer.userId = commodity.userId
+    </select>
+
+    <select id="allCommodity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from commodity
+    </select>
+
+    <select id="commodityListOfSort" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from commodity
+        where sort = #{sort}
+    </select>
+
+    <select id="commodityListOfExtent" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from commodity
+        where extent = #{extent}
+    </select>
+</mapper>
