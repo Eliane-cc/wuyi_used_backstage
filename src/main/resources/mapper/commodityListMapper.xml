@@ -15,9 +15,9 @@
         <result column="sort" jdbcType="INTEGER" property="sort"/>
         <result column="isSold" jdbcType="INTEGER" property="isSold"/>
     </resultMap>
-    <select id="Base_Column_List">
+    <sql id="Base_Column_List">
         commodityId,userId,title,extent,releaseTime,price,buyTime,imgUrl,sort,isSold
-    </select>
+    </sql>
 
     <insert id="insert" parameterType="com.javaitem.wuyi_used.domain.commodityList">
         insert into commodity
