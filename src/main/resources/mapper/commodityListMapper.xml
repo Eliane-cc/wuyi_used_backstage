@@ -16,7 +16,7 @@
         <result column="isSold" jdbcType="INTEGER" property="isSold"/>
     </resultMap>
     <sql id="Base_Column_List">
-        commodityId,userId,title,extent,releaseTime,price,buyTime,imgUrl,sort,isSold
+        commodityId,commodity.userId,title,extent,releaseTime,price,buyTime,imgUrl,sort,isSold,cosumer.userName
     </sql>
 
     <insert id="insert" parameterType="com.javaitem.wuyi_used.domain.commodityList">
@@ -146,14 +146,15 @@
     <select id="allCommodity" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from commodity
+        from commodity,cosumer
+        where cosumer.userId = commodity.userId
     </select>
 
     <select id="commodityListOfSort" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
-        from commodity
-        where sort = #{sort}
+        from commodity,cosumer
+        where sort = #{sort} and cosumer.userId = commodity.userId
     </select>
 
     <select id="commodityListOfExtent" resultMap="BaseResultMap" parameterType="java.lang.Integer">
