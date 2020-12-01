@@ -19,6 +19,32 @@
         commodityId,commodity.userId,title,extent,releaseTime,price,buyTime,imgUrl,sort,isSold,cosumer.userName
     </sql>
 
+    <select id="allCommodity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from commodity,cosumer
+        where cosumer.userId = commodity.userId
+    </select>
+
+    <select id="commodityListOfSort" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from commodity,cosumer
+        where cosumer.userId = commodity.userId
+        <if test="sort != -1">
+            and sort = #{sort}
+        </if>
+        <if test="extent != -1">
+            and extent = #{extent}
+        </if>
+        <if test="startPrice != -1">
+            and price <![CDATA[ >= ]]> #{startPrice}
+        </if>
+        <if test="endPrice != -1">
+            and price <![CDATA[ <= ]]> #{endPrice}
+        </if>
+    </select>
+
     <insert id="insert" parameterType="com.javaitem.wuyi_used.domain.commodityList">
         insert into commodity
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -141,20 +167,6 @@
         <include refid="Base_Column_List"/>
         from commodity,cosumer
         where cosumer.userName like #{userName} and cosumer.userId = commodity.userId
-    </select>
-
-    <select id="allCommodity" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from commodity,cosumer
-        where cosumer.userId = commodity.userId
-    </select>
-
-    <select id="commodityListOfSort" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from commodity,cosumer
-        where sort = #{sort} and cosumer.userId = commodity.userId
     </select>
 
     <select id="commodityListOfExtent" resultMap="BaseResultMap" parameterType="java.lang.Integer">

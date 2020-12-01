@@ -14,6 +14,11 @@ public interface CommodityListService {
     public List<commodityList> allCommodity();
 
     /**
+     * 根据商品分类查询列表
+     */
+    public List<commodityList> commodityListOfSort(Integer sort,Integer extent,Float startPrice,Float endPrice);
+
+    /**
      * 增删改
      */
     public boolean insert(commodityList commodityList);
@@ -29,11 +34,6 @@ public interface CommodityListService {
      * 根据商品名查找列表
      */
     public List<commodityList> commodityListOfName(String name);
-
-    /**
-     * 根据商品分类查询列表
-     */
-    public List<commodityList> commodityListOfSort(Integer sort);
 
     /**
      * 根据商品新旧程度查询列表

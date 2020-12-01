@@ -25,6 +25,16 @@ public class CommodityListServiceImpl implements CommodityListService {
     }
 
     /**
+     * 根据商品分类查询列表
+     *
+     * @param sort
+     */
+    @Override
+    public List<commodityList> commodityListOfSort(Integer sort,Integer extent,Float startPrice,Float endPrice) {
+        return commodityListMapper.commodityListOfSort(sort,extent,startPrice,endPrice);
+    }
+
+    /**
      * 增删改
      *
      * @param commodityList
@@ -62,16 +72,6 @@ public class CommodityListServiceImpl implements CommodityListService {
     @Override
     public List<commodityList> commodityListOfName(String name) {
         return commodityListMapper.commodityListOfName(name);
-    }
-
-    /**
-     * 根据商品分类查询列表
-     *
-     * @param sort
-     */
-    @Override
-    public List<commodityList> commodityListOfSort(Integer sort) {
-        return commodityListMapper.commodityListOfSort(sort);
     }
 
     /**

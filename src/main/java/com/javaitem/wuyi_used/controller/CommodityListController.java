@@ -30,6 +30,33 @@ public class CommodityListController {
     }
 
     /**
+     * 根据筛选条件获取列表---分类筛选
+     */
+    @RequestMapping(value = "/getList/filterSort",method = RequestMethod.GET)
+    public Object filterSort(HttpServletRequest request){
+        String commoditySort = request.getParameter("sort");
+        String commodityExtent = request.getParameter("extent");
+        String commodityPrice = request.getParameter("price");
+        System.out.println("price"+commodityPrice);
+        String[] price = commodityPrice.split("-");
+        float startPrice = 0;
+        float endPrice = 0;
+        if (commodityPrice.equals("-1")){
+            startPrice = -1;
+            endPrice = -1;
+        }else{
+             startPrice = Float.parseFloat(price[0]);
+             endPrice = Float.parseFloat(price[1]);
+        }
+        return commodityListService.commodityListOfSort(Integer.parseInt(commoditySort),Integer.parseInt(commodityExtent),startPrice,endPrice);
+    }
+
+//    @RequestMapping(value = "/getList/filter",method = RequestMethod.GET)
+//    public Object getCommodityFilterList(HttpServletRequest request){
+//        return commodityListService.filterCommodity();
+//    }
+
+    /**
      * 添加商品
      */
 //    @RequestMapping("/add")

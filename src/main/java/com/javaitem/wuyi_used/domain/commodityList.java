@@ -24,6 +24,9 @@ public class commodityList implements Serializable {
     private Integer sort;
     /*是否购买*/
     private Integer isSold;
+    /*用户名*/
+    private String userName;
+
 
     public String getUserName() {
         return userName;
@@ -32,9 +35,6 @@ public class commodityList implements Serializable {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-    /*是否购买*/
-    private String userName;
 
     public Integer getCommodityId() {
         return commodityId;

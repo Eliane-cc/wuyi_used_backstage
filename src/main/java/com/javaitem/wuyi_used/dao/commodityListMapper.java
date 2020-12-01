@@ -13,6 +13,18 @@ public interface commodityListMapper {
     public List<commodityList> allCommodity();
 
     /**
+     * 根据商品分类查询列表
+     */
+    public List<commodityList> commodityListOfSort(Integer sort,Integer extent,Float startPrice,Float endPrice);
+
+    /**
+     * 获取筛选条件后的商品列表
+     * @return
+     */
+//    public List<commodityList> filterCommodity();
+
+
+    /**
      * 增删改
      */
     public int insert(commodityList commodityList);
@@ -30,14 +42,10 @@ public interface commodityListMapper {
     public List<commodityList> commodityListOfName(String name);
 
     /**
-     * 根据商品分类查询列表
-     */
-    public List<commodityList> commodityListOfSort(Integer sort);
-
-    /**
      * 根据商品新旧程度查询列表
      */
     public List<commodityList> commodityListOfExtent(Integer extent);
+
 
     /**
      * 根据商品价格查询列表
