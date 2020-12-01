@@ -25,7 +25,7 @@ public class CommodityListServiceImpl implements CommodityListService {
     }
 
     /**
-     * 根据商品分类查询列表
+     * 根据商品分类、新旧程度、价格查询列表
      *
      * @param sort
      */
@@ -34,8 +34,19 @@ public class CommodityListServiceImpl implements CommodityListService {
         return commodityListMapper.commodityListOfSort(sort,extent,startPrice,endPrice);
     }
 
+
     /**
-     * 增删改
+     * 根据商品名查找列表
+     *
+     * @param name
+     */
+    @Override
+    public List<commodityList> commodityListOfName(String name) {
+        return commodityListMapper.commodityListOfName(name);
+    }
+
+    /**
+     * 增删改---还未实现
      *
      * @param commodityList
      */
@@ -54,33 +65,4 @@ public class CommodityListServiceImpl implements CommodityListService {
         return commodityListMapper.delete(id)>0;
     }
 
-    /**
-     * 根据主键查询单条数据
-     *
-     * @param id
-     */
-    @Override
-    public commodityList selectByPrimaryKey(Integer id) {
-        return commodityListMapper.selectByPrimaryKey(id);
-    }
-
-    /**
-     * 根据商品名查找列表
-     *
-     * @param name
-     */
-    @Override
-    public List<commodityList> commodityListOfName(String name) {
-        return commodityListMapper.commodityListOfName(name);
-    }
-
-    /**
-     * 根据商品新旧程度查询列表
-     *
-     * @param extent
-     */
-    @Override
-    public List<commodityList> commodityListOfExtent(Integer extent) {
-        return commodityListMapper.commodityListOfExtent(extent);
-    }
 }

@@ -51,10 +51,15 @@ public class CommodityListController {
         return commodityListService.commodityListOfSort(Integer.parseInt(commoditySort),Integer.parseInt(commodityExtent),startPrice,endPrice);
     }
 
-//    @RequestMapping(value = "/getList/filter",method = RequestMethod.GET)
-//    public Object getCommodityFilterList(HttpServletRequest request){
-//        return commodityListService.filterCommodity();
-//    }
+    /**
+     * 通过名字筛选商品信息
+     */
+    @RequestMapping(value = "/getList/filterName",method = RequestMethod.GET)
+    public Object filterName(HttpServletRequest request){
+        String name = request.getParameter("filterName");
+        return commodityListService.commodityListOfName(name);
+    }
+
 
     /**
      * 添加商品

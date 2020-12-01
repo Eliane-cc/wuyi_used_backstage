@@ -45,6 +45,13 @@
         </if>
     </select>
 
+    <select id="commodityListOfName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from commodity,cosumer
+        where commodity.title like concat('%',#{filterName},'%')
+    </select>
+
     <insert id="insert" parameterType="com.javaitem.wuyi_used.domain.commodityList">
         insert into commodity
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -155,24 +162,5 @@
         where commodityId = #{commodityId}
     </delete>
 
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from commodity
-        where commodityId = #{commodityId}
-    </select>
 
-    <select id="commodityListOfName" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select
-        <include refid="Base_Column_List"/>
-        from commodity,cosumer
-        where cosumer.userName like #{userName} and cosumer.userId = commodity.userId
-    </select>
-
-    <select id="commodityListOfExtent" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from commodity
-        where extent = #{extent}
-    </select>
 </mapper>
